@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNO Accesible — Prototipo 0.3</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+ <div><p class="eyebrow">PROTOTIPO PERSONAL · VERSIÓN 0.3</p><h1>UNO Accesible</h1>
+ <p class="subtitle">Los símbolos también cuentan. Cuatro jugadores y cartas especiales.</p></div>
+ <button id="newGame" class="secondary">Nueva partida</button>
+</header>
+<main>
+ <section class="legend-panel panel">
+  <div class="legend"><span><b class="symbol circle">●</b> Rojo</span><span><b class="symbol star">★</b> Verde</span><span><b class="symbol square">■</b> Azul</span><span><b class="symbol triangle">▲</b> Amarillo</span></div>
+  <p class="small-note">La carta <b>Cambio de percepción</b> activa el cambio visual durante la partida. No hay selector manual en esta versión.</p>
+ </section>
+ <section class="table panel">
+  <div class="statusline"><div><span class="label">Turno</span><strong id="turnText">Tu turno</strong></div><div><span class="label">Jugador 2</span><strong id="count1">7 cartas</strong></div><div><span class="label">Jugador 3</span><strong id="count2">7 cartas</strong></div><div><span class="label">Jugador 4</span><strong id="count3">7 cartas</strong></div><div><span class="label">Estado</span><strong id="statusText">Tu turno</strong></div></div>
+  <div class="seats">
+   <div class="seat"><div class="avatar">J2</div><div><b>Jugador 2</b><small id="msg1">Esperando su turno</small></div><div class="backs"><i></i><i></i><i></i></div></div>
+   <div class="seat"><div class="avatar">J3</div><div><b>Jugador 3</b><small id="msg2">Esperando su turno</small></div><div class="backs"><i></i><i></i><i></i></div></div>
+   <div class="seat"><div class="avatar">J4</div><div><b>Jugador 4</b><small id="msg3">Esperando su turno</small></div><div class="backs"><i></i><i></i><i></i></div></div>
+  </div>
+  <div class="center-area"><div class="pile-label">Carta en juego</div><div id="topCard" class="playing-card"></div>
+   <div class="active-perception"><span>Percepción actual</span><strong id="activeMode">Vista normal</strong><span id="activeColorLabel">Color activo: —</span></div>
+   <div class="pile-actions"><button id="drawBtn">Robar carta</button></div><p id="feedback" role="status" aria-live="polite">Juega por color, número o símbolo.</p>
+  </div>
+  <div class="hand-heading"><h2>Tu mano</h2><span id="handCount">7 cartas</span></div><div id="playerHand" class="hand"></div>
+ </section>
+ <section class="howto panel"><h2>Qué probar</h2><ol><li>Juega contra tres rivales controlados por la computadora.</li><li>Busca la carta especial <b>Cambio de percepción</b> y juégala para cambiar el modo visual.</li><li>Cuando cualquier participante se quede sin cartas, la partida debe detenerse y anunciar al ganador.</li></ol><p><b>Nota:</b> prototipo de mecánica. Las reglas y los efectos siguen siendo provisionales y requieren pruebas de accesibilidad.</p></section>
+</main>
+<div id="winnerOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="winnerTitle">
+ <div class="winner-card"><div class="trophy">★</div><p class="eyebrow">FIN DE LA PARTIDA</p><h2 id="winnerTitle">¡Tenemos ganador!</h2><p id="winnerMessage">La partida ha terminado.</p><button id="playAgain">Jugar otra vez</button></div>
+</div>
+<div id="colorOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="colorTitle">
+ <div class="winner-card color-picker-card">
+  <p class="eyebrow">COMODÍN</p><h2 id="colorTitle">Elige el color</h2>
+  <p id="colorMessage">Selecciona el color que seguirá en juego.</p>
+  <div class="color-options">
+   <button class="color-choice choice-red" data-color="red"><span>●</span><b>Rojo</b></button>
+   <button class="color-choice choice-green" data-color="green"><span>★</span><b>Verde</b></button>
+   <button class="color-choice choice-blue" data-color="blue"><span>■</span><b>Azul</b></button>
+   <button class="color-choice choice-yellow" data-color="yellow"><span>▲</span><b>Amarillo</b></button>
+  </div>
+ </div>
+</div>
+<div id="perceptionOverlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="perceptionTitle">
+ <div class="winner-card perception-modal">
+  <div class="perception-icon">◉</div>
+  <p class="eyebrow">CAMBIO DE PERCEPCIÓN</p>
+  <h2 id="perceptionTitle">¿Cambiar la percepción?</h2>
+  <p id="perceptionMessage">Esta carta cambiará la simulación visual activa.</p>
+  <div class="mode-preview">
+   <span>Modo actual</span><strong id="currentModePreview">Vista normal</strong>
+   <span class="mode-arrow">→</span>
+   <span>Nuevo modo</span><strong id="nextModePreview">Protanopía</strong>
+  </div>
+  <div class="modal-actions">
+   <button id="cancelPerception" class="secondary">Cancelar</button>
+   <button id="confirmPerception">Confirmar cambio</button>
+  </div>
+ </div>
+</div>
+<script src="app.js"></script></body></html>

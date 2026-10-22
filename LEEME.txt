@@ -1,0 +1,17 @@
+UNO Accesible — Prototipo 0.7
+
+Novedad:
+- La carta Cambio de percepción ahora abre una ventana de confirmación.
+- La ventana muestra el modo visual actual y el siguiente modo del ciclo.
+- Confirmar descarta la carta, aplica el cambio y avanza el turno.
+- Cancelar deja la carta en la mano y conserva el turno.
+- Se aclara que esta carta cambia la simulación visual, no el color activo de la partida.
+- Los rivales controlados por la computadora siguen aplicando el cambio automáticamente.
+
+Prueba:
+1. Abre index.html en Chrome o Edge.
+2. Juega una carta Cambio de percepción.
+3. Comprueba el modo actual y el nuevo modo.
+4. Prueba Confirmar y después, en otra oportunidad, Cancelar.
+
+Sigue siendo un prototipo; reglas y simulación visual son provisionales.
